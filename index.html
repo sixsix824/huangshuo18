@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>十八序 · 黄朔十八岁前夕影像展</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;0,600;1,200;1,300&family=Noto+Serif+SC:wght@200;300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior: smooth;}
+body{
+  background:#f5e8e3;
+  color:#2c2421;
+  overflow-x:hidden;
+  font-family:"Cormorant Garamond","Noto Serif SC",Georgia,serif;
+  font-weight:200;
+  min-height:100vh;
+}
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background:radial-gradient(ellipse at 50% 20%,rgba(220,190,180,0.25) 0%,transparent 70%),
+             radial-gradient(ellipse at 80% 80%,rgba(210,180,170,0.12) 0%,transparent 50%),
+             radial-gradient(ellipse at 20% 60%,rgba(215,185,175,0.08) 0%,transparent 40%);
+  pointer-events:none;
+  z-index:0;
+}
+*{position:relative;z-index:1}
+
+::-webkit-scrollbar{width:2px;height:2px}
+::-webkit-scrollbar-thumb{background:#d5b8b0;border-radius:2px}
+::-webkit-scrollbar-track{background:transparent}
+
+.nav{
+  position:fixed;top:0;left:0;right:0;
+  padding:28px 48px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:99;
+  opacity:0;
+  animation:navFade 1.2s ease 1.5s forwards;
+  pointer-events:none;
+  transition:background 0.6s, box-shadow 0.6s;
+}
+.nav.scrolled{
+  background:rgba(245,232,227,0.75);
+  backdrop-filter:blur(20px) saturate(1.05);
+  -webkit-backdrop-filter:blur(20px) saturate(1.05);
+  pointer-events:auto;
+  opacity:1;
+  box-shadow:0 1px 0 rgba(180,120,110,0.06);
+}
+@keyframes navFade{to{opacity:1;pointer-events:auto}}
+.nav-title{
+  letter-spacing:14px;
+  color:#8a6f67;
+  font-size:10px;
+  font-weight:200;
+}
+.nav-menu{
+  display:flex;
+  gap:52px;
+  font-size:10px;
+  color:#8a6f67;
+  font-weight:200;
+  letter-spacing:8px;
+}
+.nav-menu a{position:relative;transition:color 0.5s}
+.nav-menu a::after{
+  content:'';position:absolute;bottom:-5px;left:0;width:0;height:1px;
+  background:#c9a8a0;transition:width 0.6s cubic-bezier(0.2,0,0,1)
+}
+.nav-menu a:hover{color:#c9a8a0}
+.nav-menu a:hover::after{width:100%}
+
+.cover{
+  position:fixed;inset:0;background:#f5e8e3;z-index:9999;
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity 1.2s ease;cursor:pointer;
+}
+.cover.fadeout{opacity:0;pointer-events:none}
+.cover-inner{width:min(92vw,560px);text-align:center;position:relative}
+.cover-number{
+  font-size:clamp(8rem,20vw,14rem);
+  font-weight:200;
+  color:#dbb8af;
+  line-height:0.9;
+  letter-spacing:-8px;
+  transition:0.8s cubic-bezier(0.2,0,0,1);
+}
+.cover-sub{font-size:10px;letter-spacing:12px;color:#8a6f67;font-weight:200;margin-top:14px}
+.cover-title{font-size:17px;letter-spacing:16px;color:#3d322e;font-weight:300;margin-top:16px}
+.cover-before{
+  font-size:9px;
+  letter-spacing:10px;
+  color:#b0988f;
+  font-weight:200;
+  margin-top:12px;
+}
+.cover-line{width:32px;height:1px;background:#d5b8b0;margin:18px auto 0}
+.cover-tip{
+  position:absolute;bottom:-60px;left:50%;transform:translateX(-50%);
+  font-size:9px;letter-spacing:10px;color:#b8a098;font-weight:200;
+  animation:pulse 2.8s ease-in-out infinite
+}
+@keyframes pulse{0%,100%{opacity:0.2}50%{opacity:0.6}}
+.cover.tear .cover-number{transform:scale(1.6) translateY(-40px);opacity:0}
+.cover.tear .cover-sub,.cover.tear .cover-title,.cover.tear .cover-before,.cover.tear .cover-line,.cover.tear .cover-tip{opacity:0;transition:0.6s}
+
+.main{opacity:0;animation:mainFade 1.2s ease 1.8s forwards}
+@keyframes mainFade{to{opacity:1}}
+
+.hero-section{
+  min-height:80vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:160px 24px 80px;
+  max-width:720px;
+  margin:0 auto;
+}
+.hero-title{
+  font-size:clamp(3.6rem,8vw,6rem);
+  font-weight:200;
+  letter-spacing:28px;
+  color:#2c2421;
+  line-height:1.1;
+}
+.hero-title span{
+  display:block;
+  font-size:clamp(0.75rem,1.3vw,1rem);
+  letter-spacing:16px;
+  color:#b0988f;
+  font-weight:200;
+  margin-top:10px;
+}
+.hero-body{
+  margin-top:52px;
+  font-size:clamp(0.8rem,1vw,0.95rem);
+  line-height:3;
+  color:#6a5a53;
+  font-weight:200;
+  letter-spacing:8px;
+  max-width:520px;
+}
+.hero-body p+p{margin-top:2px}
+.hero-line{width:28px;height:1px;background:#d5b8b0;margin:44px auto 0}
+
+.gallery-section{
+  min-height:100vh;
+  padding:80px 24px 60px;
+  max-width:1440px;
+  margin:0 auto;
+  position:relative;
+}
+.section-header{
+  display:flex;
+  align-items:baseline;
+  gap:28px;
+  margin-bottom:40px;
+  padding-bottom:18px;
+  border-bottom:1px solid #e6d5ce;
+}
+.section-title{
+  font-size:clamp(2rem,4vw,3.2rem);
+  font-weight:200;
+  letter-spacing:12px;
+  color:#2c2421;
+  line-height:1;
+}
+.section-desc{
+  font-size:11px;
+  color:#b0988f;
+  font-weight:200;
+  letter-spacing:8px;
+  margin-left:auto;
+  background:rgba(200,170,160,0.07);
+  padding:4px 18px;
+  border-radius:20px;
+  border:0.5px solid rgba(200,170,160,0.12);
+}
+
+.scroll-wrap{
+  display:flex;
+  gap:28px;
+  overflow-x:auto;
+  padding:12px 4px 32px;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  cursor:grab;
+}
+.scroll-wrap:active{cursor:grabbing}
+.scroll-wrap::-webkit-scrollbar{height:2px}
+.scroll-wrap::-webkit-scrollbar-thumb{background:#d5b8b0;border-radius:2px}
+.img-item{
+  flex:0 0 min(300px,70vw);
+  aspect-ratio:3/4;
+  border-radius:2px;
+  overflow:hidden;
+  cursor:pointer;
+  scroll-snap-align:start;
+  background:#fcf8f6;
+  box-shadow:0 2px 12px rgba(180,120,110,0.04),inset 0 0 0 0.5px rgba(180,120,110,0.06);
+  transition:transform 0.7s cubic-bezier(0.2,0,0,1),box-shadow 0.7s ease;
+}
+.img-item:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 48px rgba(180,120,110,0.08),inset 0 0 0 0.5px rgba(180,120,110,0.08);
+}
+.img-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 30%;
+  background:#f5e8e3;
+  transition:transform 0.9s cubic-bezier(0.2,0,0,1)
+}
+.img-item:hover img{transform:scale(1.025)}
+.img-label{
+  padding:16px 20px 8px;
+  font-size:9px;
+  color:#8a6f67;
+  letter-spacing:8px;
+  font-weight:200;
+  background:rgba(245,232,227,0.4);
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+  margin-top:-32px;
+  position:relative;
+  width:fit-content;
+  padding:6px 22px;
+  border-radius:0 12px 0 0;
+  border-right:0.5px solid rgba(200,170,160,0.1);
+  border-top:0.5px solid rgba(200,170,160,0.1);
+}
+
+/* 私服展厅：裁切位置 15% */
+#memory .img-item img {
+  object-position:center 15%;
+}
+
+.music-box{max-width:700px;margin:0 auto;padding:20px 0}
+.music-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:22px 0;
+  border-bottom:0.5px solid #e6d5ce;
+  gap:20px;
+  transition:background 0.4s;
+  padding-left:12px;
+  padding-right:12px;
+  border-radius:4px;
+}
+.music-item:hover{background:rgba(200,170,160,0.04)}
+.music-index{
+  color:#c9a8a0;
+  min-width:32px;
+  font-weight:200;
+  font-size:12px;
+  letter-spacing:4px;
+}
+.music-name{
+  flex:1;
+  font-weight:200;
+  font-size:14px;
+  letter-spacing:6px;
+  color:#3d322e;
+}
+.play-link{
+  color:#b0988f;
+  font-size:11px;
+  letter-spacing:6px;
+  font-weight:200;
+  transition:color 0.4s;
+  padding:4px 0;
+}
+.play-link:hover{color:#c9a8a0}
+
+.end-box{
+  min-height:70vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:60px 20px 40px;
+  background:radial-gradient(ellipse at 50% 80%,rgba(220,190,180,0.08) 0%,transparent 60%);
+}
+.end-number{
+  font-size:clamp(8rem,18vw,14rem);
+  font-weight:200;
+  color:#dbb8af;
+  line-height:0.9;
+  letter-spacing:-12px;
+}
+.end-text{
+  margin-top:24px;
+  font-size:clamp(0.95rem,1.1vw,1.1rem);
+  letter-spacing:12px;
+  color:#6a5a53;
+  font-weight:200;
+  max-width:500px;
+  line-height:2.6;
+}
+.end-text p+p{margin-top:4px}
+.end-line{width:48px;height:0.5px;background:#d5b8b0;margin:32px auto 0}
+.end-fin{
+  margin-top:22px;
+  font-size:8px;
+  letter-spacing:16px;
+  color:#b0988f;
+  font-weight:200;
+}
+footer{padding:32px 20px;text-align:center;font-size:8px;letter-spacing:10px;color:#b8a098;font-weight:200}
+
+.lightbox{
+  position:fixed;inset:0;background:rgba(30,20,16,0.94);z-index:9990;
+  display:none;align-items:center;justify-content:center;padding:20px;
+  backdrop-filter:blur(8px);
+}
+.lightbox.active{display:flex}
+.light-img{max-width:90%;max-height:84vh;border-radius:2px;object-fit:contain;}
+.light-btn{
+  position:absolute;top:50%;transform:translateY(-50%);
+  background:none;border:none;color:rgba(255,255,255,0.12);
+  font-size:34px;padding:20px;cursor:pointer;transition:0.5s;font-weight:200;
+  font-family:"Cormorant Garamond",serif;
+}
+.light-btn:hover{color:rgba(255,255,255,0.45)}
+.prev{left:8px}
+.next{right:8px}
+.close{
+  position:absolute;top:24px;right:32px;
+  font-size:20px;color:rgba(255,255,255,0.12);
+  background:none;border:none;cursor:pointer;transition:0.5s;font-weight:200;
+}
+.close:hover{color:rgba(255,255,255,0.45)}
+
+.fade-in{opacity:0;transform:translateY(44px);transition:1.6s cubic-bezier(0.15,0,0,1)}
+.fade-in.show{opacity:1;transform:translateY(0)}
+
+@media(max-width:860px){
+.nav{padding:20px 24px;flex-direction:column;gap:12px;}
+.nav-title{font-size:9px;letter-spacing:12px;}
+.nav-menu{gap:18px;flex-wrap:wrap;justify-content:center;font-size:9px;letter-spacing:4px;}
+.hero-section{padding:140px 20px 60px;min-height:70vh}
+.section-header{flex-direction:column;gap:8px;align-items:flex-start}
+.section-desc{margin-left:0}
+.img-item{flex:0 0 78vw;aspect-ratio:3/4}
+}
+@media(max-width:520px){
+.nav{padding:16px 16px;}
+.nav-menu{gap:10px;font-size:8px;letter-spacing:3px;}
+.hero-section{padding:120px 16px 40px;}
+.hero-title{letter-spacing:16px}
+.hero-body{font-size:0.8rem;letter-spacing:5px}
+.gallery-section{padding:60px 16px 40px;}
+.img-item{flex:0 0 88vw;aspect-ratio:3/4}
+.end-text{font-size:0.85rem;letter-spacing:8px}
+}
+</style>
+</head>
+<body>
+
+<div class="nav" id="nav">
+<div class="nav-title">十八序 · BEFORE 18</div>
+<div class="nav-menu">
+<a href="#light">Light</a>
+<a href="#motion">Motion</a>
+<a href="#portrait">Portrait</a>
+<a href="#sound">Sound</a>
+<a href="#memory">Memory</a>
+<a href="#stage">Stage</a>
+</div>
+</div>
+
+<div class="cover" id="cover">
+<div class="cover-inner">
+<div class="cover-number">18</div>
+<div class="cover-sub">ONLINE EXHIBITION</div>
+<div class="cover-title">十八序 · HUANGSHUO</div>
+<div class="cover-before">BEFORE 18</div>
+<div class="cover-line"></div>
+<div class="cover-tip">TAP TO ENTER</div>
+</div>
+</div>
+
+<div class="main">
+
+<!-- 序言 -->
+<section class="hero-section fade-in">
+<div class="hero-title">十八序<span>黄朔 · 十八岁前夕线上影像展</span></div>
+<div class="hero-body">
+<p>镜头收录沿途碎片，定格一段缓缓生长的少年时光。</p>
+<p>从懵懂练习的朝夕，到奔赴舞台的路途，所有画面串联起直至成年的序章。</p>
+<p>十八岁是分界线，旧岁落幕，前路崭新。</p>
+</div>
+<div class="hero-line"></div>
+</section>
+
+<!-- Light -->
+<section class="gallery-section fade-in" id="light">
+<div class="section-header">
+<div class="section-title">Light</div>
+<div class="section-desc">幼时影像</div>
+</div>
+<div class="scroll-wrap gallery" data-gallery="g1">
+<div class="img-item"><img src="child01.jpg" alt="儿时碎片"><div class="img-label">儿时碎片</div></div>
+<div class="img-item"><img src="child02.jpg" alt="旧时光"><div class="img-label">旧时光</div></div>
+<div class="img-item"><img src="child03.jpg" alt="年少瞬间"><div class="img-label">年少瞬间</div></div>
+<div class="img-item"><img src="child04.jpg" alt="童年快照"><div class="img-label">童年快照</div></div>
+<div class="img-item"><img src="child05.jpg" alt="青涩幼时"><div class="img-label">青涩幼时</div></div>
+<div class="img-item"><img src="child06.jpg" alt="小小少年"><div class="img-label">小小少年</div></div>
+<div class="img-item"><img src="child08.jpg" alt="童年印记"><div class="img-label">童年印记</div></div>
+<div class="img-item"><img src="child09.jpg" alt="长大之前"><div class="img-label">长大之前</div></div>
+<div class="img-item"><img src="child10.jpg" alt="最初模样"><div class="img-label">最初模样</div></div>
+<div class="img-item"><img src="child11.jpg" alt="懵懂童年"><div class="img-label">懵懂童年</div></div>
+</div>
+</section>
+
+<!-- Motion -->
+<section class="gallery-section fade-in" id="motion">
+<div class="section-header">
+<div class="section-title">Motion</div>
+<div class="section-desc">行迹 · 机场纪实</div>
+</div>
+<div class="scroll-wrap gallery" data-gallery="g2">
+<div class="img-item"><img src="look01.jpg" alt="奔赴前路"><div class="img-label">奔赴前路</div></div>
+<div class="img-item"><img src="look03.jpg" alt="途中等候"><div class="img-label">途中等候</div></div>
+<div class="img-item"><img src="look04.jpg" alt="出发时刻"><div class="img-label">出发时刻</div></div>
+<div class="img-item"><img src="look05.jpg" alt="城市之间"><div class="img-label">城市之间</div></div>
+<div class="img-item"><img src="look06.jpg" alt="步履不停"><div class="img-label">步履不停</div></div>
+<div class="img-item"><img src="look07.jpg" alt="在路上"><div class="img-label">在路上</div></div>
+<div class="img-item"><img src="look08.jpg" alt="旅途记录"><div class="img-label">旅途记录</div></div>
+<div class="img-item"><img src="look09.jpg" alt="奔赴远方"><div class="img-label">奔赴远方</div></div>
+<div class="img-item"><img src="look10.jpg" alt="前行途中"><div class="img-label">前行途中</div></div>
+</div>
+</section>
+
+<!-- Portrait -->
+<section class="gallery-section fade-in" id="portrait">
+<div class="section-header">
+<div class="section-title">Portrait</div>
+<div class="section-desc">分年龄段人像</div>
+</div>
+<div class="scroll-wrap gallery" data-gallery="g3">
+<div class="img-item"><img src="IMG_20260802_042909.jpg" alt="13岁"><div class="img-label">13岁</div></div>
+<div class="img-item"><img src="IMG_20260802_042927.jpg" alt="13岁"><div class="img-label">13岁</div></div>
+<div class="img-item"><img src="IMG_20260802_042943.jpg" alt="13岁"><div class="img-label">13岁</div></div>
+<div class="img-item"><img src="IMG_20260802_043002.jpg" alt="13岁"><div class="img-label">13岁</div></div>
+<div class="img-item"><img src="IMG_20260802_042703.jpg" alt="14岁"><div class="img-label">14岁</div></div>
+<div class="img-item"><img src="IMG_20260802_042728.jpg" alt="14岁"><div class="img-label">14岁</div></div>
+<div class="img-item"><img src="IMG_20260802_042747.jpg" alt="14岁"><div class="img-label">14岁</div></div>
+<div class="img-item"><img src="IMG_20260802_042806.jpg" alt="14岁"><div class="img-label">14岁</div></div>
+<div class="img-item"><img src="IMG_20260802_042452.jpg" alt="15岁"><div class="img-label">15岁</div></div>
+<div class="img-item"><img src="IMG_20260802_042517.jpg" alt="15岁"><div class="img-label">15岁</div></div>
+<div class="img-item"><img src="IMG_20260802_042536.jpg" alt="15岁"><div class="img-label">15岁</div></div>
+<div class="img-item"><img src="IMG_20260802_042558.jpg" alt="15岁"><div class="img-label">15岁</div></div>
+<div class="img-item"><img src="IMG_20260802_035323.jpg" alt="16岁"><div class="img-label">16岁</div></div>
+<div class="img-item"><img src="IMG_20260802_035351.jpg" alt="16岁"><div class="img-label">16岁</div></div>
+<div class="img-item"><img src="IMG_20260802_035413.jpg" alt="16岁"><div class="img-label">16岁</div></div>
+<div class="img-item"><img src="IMG_20260802_035440.jpg" alt="16岁"><div class="img-label">16岁</div></div>
+<div class="img-item"><img src="17a.jpg" alt="17岁"><div class="img-label">17岁</div></div>
+<div class="img-item"><img src="17b.jpg" alt="17岁"><div class="img-label">17岁</div></div>
+<div class="img-item"><img src="IMG_20260802_042316.jpg" alt="17岁"><div class="img-label">17岁</div></div>
+<div class="img-item"><img src="IMG_20260802_042341.jpg" alt="17岁"><div class="img-label">17岁</div></div>
+</div>
+</section>
+
+<!-- Sound -->
+<section class="gallery-section fade-in" id="sound">
+<div class="section-header">
+<div class="section-title">Sound</div>
+<div class="section-desc">音乐馆</div>
+</div>
+<div class="music-box">
+<div class="music-item"><span class="music-index">01</span><span class="music-name">I never say goodbye</span><a class="play-link" href="https://163cn.tv/bb9xYUlO" target="_blank">▶ 网易云</a></div>
+<div class="music-item"><span class="music-index">02</span><span class="music-name">巧克力</span><a class="play-link" href="https://163cn.tv/bb9ylwUp" target="_blank">▶ 网易云</a></div>
+<div class="music-item"><span class="music-index">03</span><span class="music-name">责怪</span><a class="play-link" href="https://c6.y.qq.com/base/fcgi-bin/u?__=ni1iXrJiHBmc" target="_blank">▶ QQ音乐</a></div>
+<div class="music-item"><span class="music-index">04</span><span class="music-name">哈姆雷特不浪漫</span><a class="play-link" href="https://c6.y.qq.com/base/fcgi-bin/u?__=Pja0yrJiHZ9e" target="_blank">▶ QQ音乐</a></div>
+<div class="music-item"><span class="music-index">05</span><span class="music-name">时光地图</span><a class="play-link" href="https://c6.y.qq.com/base/fcgi-bin/u?__=Q5NpXkJiHhyf" target="_blank">▶ QQ音乐</a></div>
+<div class="music-item"><span class="music-index">06</span><span class="music-name">灵魂导师黄sir的快乐一天</span><a class="play-link" href="https://c6.y.qq.com/base/fcgi-bin/u?__=Uvkb6rJiH20j" target="_blank">▶ QQ音乐</a></div>
+</div>
+</section>
+
+<!-- Memory 私服展厅 -->
+<section class="gallery-section fade-in" id="memory">
+<div class="section-header">
+<div class="section-title">Memory</div>
+<div class="section-desc">遗存 · 私服与宠物</div>
+</div>
+<div class="scroll-wrap gallery" data-gallery="g4">
+<div class="img-item"><img src="w01.jpg" alt="日常私服"><div class="img-label">日常私服</div></div>
+<div class="img-item"><img src="w02.jpg" alt="闲暇瞬间"><div class="img-label">闲暇瞬间</div></div>
+<div class="img-item"><img src="w03.jpg" alt="生活碎片"><div class="img-label">生活碎片</div></div>
+<div class="img-item"><img src="w04.jpg" alt="私服记录"><div class="img-label">私服记录</div></div>
+<div class="img-item"><img src="w05.jpg" alt="私服记录"><div class="img-label">私服记录</div></div>
+<div class="img-item"><img src="w06.jpg" alt="私服记录"><div class="img-label">私服记录</div></div>
+<div class="img-item"><img src="w07.jpg" alt="私服记录"><div class="img-label">私服记录</div></div>
+<div class="img-item"><img src="w08.jpg" alt="私服记录"><div class="img-label">私服记录</div></div>
+<div class="img-item"><img src="w09.jpg" alt="私服记录"><div class="img-label">私服记录</div></div>
+<div class="img-item"><img src="w10.jpg" alt="私服记录"><div class="img-label">私服记录</div></div>
+<div class="img-item"><img src="w11.jpg" alt="私服记录"><div class="img-label">私服记录</div></div>
+<div class="img-item"><img src="w12.jpg" alt="私服记录"><div class="img-label">私服记录</div></div>
+<div class="img-item"><img src="w13.jpg" alt="私服记录"><div class="img-label">私服记录</div></div>
+<div class="img-item"><img src="w14.jpg" alt="私服记录"><div class="img-label">私服记录</div></div>
+<div class="img-item"><img src="w15.jpg" alt="私服记录"><div class="img-label">私服记录</div></div>
+<div class="img-item"><img src="dog-agou.jpg" alt="阿狗"><div class="img-label">阿狗</div></div>
+<div class="img-item"><img src="dog-liuliu.jpg" alt="六六"><div class="img-label">六六</div></div>
+</div>
+</section>
+
+<!-- Stage -->
+<section class="gallery-section fade-in" id="stage">
+<div class="section-header">
+<div class="section-title">Stage</div>
+<div class="section-desc">舞台影像</div>
+</div>
+<div class="scroll-wrap gallery" data-gallery="g5">
+<div class="img-item"><img src="IMG_20260802_045127.jpg" alt="舞台"><div class="img-label">舞台</div></div>
+<div class="img-item"><img src="IMG_20260802_045153.jpg" alt="舞台"><div class="img-label">舞台</div></div>
+<div class="img-item"><img src="IMG_20260802_045216.jpg" alt="舞台"><div class="img-label">舞台</div></div>
+<div class="img-item"><img src="IMG_20260802_045236.jpg" alt="舞台"><div class="img-label">舞台</div></div>
+<div class="img-item"><img src="IMG_20260802_045253.jpg" alt="舞台"><div class="img-label">舞台</div></div>
+<div class="img-item"><img src="IMG_20260802_045312.jpg" alt="舞台"><div class="img-label">舞台</div></div>
+<div class="img-item"><img src="IMG_20260802_045348.jpg" alt="舞台"><div class="img-label">舞台</div></div>
+<div class="img-item"><img src="IMG_20260802_045415.jpg" alt="舞台"><div class="img-label">舞台</div></div>
+<div class="img-item"><img src="IMG_20260802_045435.jpg" alt="舞台"><div class="img-label">舞台</div></div>
+<div class="img-item"><img src="IMG_20260802_045501.jpg" alt="舞台"><div class="img-label">舞台</div></div>
+<div class="img-item"><img src="IMG_20260802_045519.jpg" alt="舞台"><div class="img-label">舞台</div></div>
+<div class="img-item"><img src="IMG_20260802_045538.jpg" alt="舞台"><div class="img-label">舞台</div></div>
+<div class="img-item"><img src="IMG_20260802_045612.jpg" alt="舞台"><div class="img-label">舞台</div></div>
+<div class="img-item"><img src="IMG_20260802_045807.jpg" alt="舞台"><div class="img-label">舞台</div></div>
+<div class="img-item"><img src="IMG_20260802_045830.jpg" alt="舞台"><div class="img-label">舞台</div></div>
+<div class="img-item"><img src="IMG_20260802_045853.jpg" alt="舞台"><div class="img-label">舞台</div></div>
+<div class="img-item"><img src="IMG_20260802_045913.jpg" alt="舞台"><div class="img-label">舞台</div></div>
+<div class="img-item"><img src="IMG_20260802_045929.jpg" alt="舞台"><div class="img-label">舞台</div></div>
+<div class="img-item"><img src="IMG_20260802_045950.jpg" alt="舞台"><div class="img-label">舞台</div></div>
+</div>
+</section>
+
+<!-- 结尾 -->
+<section class="end-box fade-in">
+<div class="end-number">18</div>
+<div class="end-text">
+<p>启程之前，已行过许多路</p>
+<p>尚未抵达的，留作余白</p>
+</div>
+<div class="end-line"></div>
+<div class="end-fin">BEFORE 18 · 未完待续</div>
+</section>
+
+<footer>HUANGSHUO · 十八岁前夕线上影像展</footer>
+</div>
+
+<div class="lightbox" id="lightbox">
+<button class="close" id="lightClose">×</button>
+<button class="light-btn prev" id="prevBtn">‹</button>
+<img class="light-img" id="lightImg" src="" alt="">
+<button class="light-btn next" id="nextBtn">›</button>
+</div>
+
+<script>
+const cover = document.getElementById('cover');
+cover.addEventListener('click',()=>{
+  cover.classList.add('tear');
+  setTimeout(()=>{
+    cover.classList.add('fadeout');
+    document.body.style.overflow = 'auto';
+    window.scrollTo({top:0,behavior:'smooth'})
+  },800)
+})
+
+const nav = document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled', window.scrollY > 60)
+})
+
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(item=>{
+    if(item.isIntersecting) item.target.classList.add('show');
+  })
+},{threshold:0.1})
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el))
+
+const lightbox = document.getElementById('lightbox');
+const lightImg = document.getElementById('lightImg');
+const closeBtn = document.getElementById('lightClose');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+let currentGallery = [], curIndex = 0;
+
+document.querySelectorAll('.img-item').forEach(item=>{
+  item.addEventListener('click',function(){
+    const wrap = this.closest('.scroll-wrap');
+    currentGallery = Array.from(wrap.querySelectorAll('.img-item img'));
+    curIndex = currentGallery.indexOf(this.querySelector('img'));
+    lightImg.src = currentGallery[curIndex].src;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  })
+})
+
+const closeLightbox = ()=>{
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+}
+closeBtn.onclick = closeLightbox;
+lightbox.onclick = e=>{ if(e.target === lightbox) closeLightbox() }
+prevBtn.onclick = ()=>{ curIndex = (curIndex-1+currentGallery.length)%currentGallery.length; lightImg.src = currentGallery[curIndex].src }
+nextBtn.onclick = ()=>{ curIndex = (curIndex+1)%currentGallery.length; lightImg.src = currentGallery[curIndex].src }
+
+document.onkeydown = e=>{
+  if(!lightbox.classList.contains('active')) return;
+  if(e.key==='ArrowLeft') prevBtn.click();
+  if(e.key==='ArrowRight') nextBtn.click();
+  if(e.key==='Escape') closeLightbox();
+}
+
+let touchX = 0;
+lightbox.addEventListener('touchstart',e=> touchX = e.touches[0].clientX)
+lightbox.addEventListener('touchend',e=>{
+  const diff = e.changedTouches[0].clientX;
+  if(diff < -50) nextBtn.click();
+  if(diff > 50) prevBtn.click();
+})
+</script>
+</body>
+</html>
